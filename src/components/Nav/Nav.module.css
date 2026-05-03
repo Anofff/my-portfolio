@@ -1,0 +1,36 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.75rem 0 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4rem;
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: color 0.15s;
+}
+
+.logo:hover {
+  color: var(--yellow);
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+}
+
+.links a {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--white);
+  transition: color 0.15s;
+}
+
+.links a:hover,
+.links a.active {
+  color: var(--yellow);
+}
