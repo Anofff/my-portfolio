@@ -1,0 +1,16 @@
+:root {
+  --bg: #2b2b2b;
+  --surface: #222222;
+  --surface2: #1e1e1e;
+  --yellow: #c8d400;
+  --white: #e8e8e8;
+  --muted: #777777;
+  --border: #3a3a3a;
+
+  --font-display: 'VT323', monospace;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --max-width: 680px;
+  --page-padding: 1.5rem;
+}
