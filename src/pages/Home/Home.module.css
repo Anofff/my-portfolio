@@ -1,0 +1,42 @@
+.hero {
+  margin-bottom: 3.5rem;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  color: var(--yellow);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.role {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.bio {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #bbb;
+  line-height: 1.8;
+  margin-bottom: 1.75rem;
+}
+
+.bio strong {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.workList {
+  margin-bottom: 1.5rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0.25rem 0 2.75rem;
+}
