@@ -1,0 +1,107 @@
+.row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: start;
+  gap: 1.25rem;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.row:hover .title {
+  color: var(--yellow);
+}
+
+.row:hover .arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+.date {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-top: 0.2rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.topic {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  border: 0.5px solid var(--border);
+  color: var(--muted);
+}
+
+.engineering {
+  border-color: #4a6fa5;
+  color: #7aa3d4;
+}
+
+.tools {
+  border-color: #8a6a3a;
+  color: #c4a46a;
+}
+
+.career {
+  border-color: #5a7a4a;
+  color: #8db87a;
+}
+
+.design {
+  border-color: #7a5a8a;
+  color: #b48ac4;
+}
+
+.life {
+  border-color: #6a5a7a;
+  color: #a48ab4;
+}
+
+.readTime {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #555;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white);
+  transition: color 0.15s;
+  line-height: 1.35;
+}
+
+.excerpt {
+  font-size: 0.83rem;
+  font-weight: 300;
+  color: #888;
+  line-height: 1.6;
+}
+
+.arrow {
+  font-size: 1rem;
+  color: var(--yellow);
+  opacity: 0;
+  transition:
+    opacity 0.15s,
+    transform 0.15s;
+  padding-top: 0.2rem;
+  flex-shrink: 0;
+}
