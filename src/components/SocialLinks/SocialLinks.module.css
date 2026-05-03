@@ -1,0 +1,48 @@
+.row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border);
+  transition:
+    color 0.15s,
+    text-decoration-color 0.15s;
+}
+
+.link:hover {
+  color: var(--yellow);
+  text-decoration-color: var(--yellow);
+}
+
+.resumeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--yellow);
+  color: #1a1a1a;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition:
+    opacity 0.15s,
+    transform 0.1s;
+  text-decoration: none;
+}
+
+.resumeBtn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
