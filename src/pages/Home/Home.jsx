@@ -12,15 +12,23 @@ export default function Home() {
         <p className={styles.role}>{personal.role}</p>
       </div>
 
-      <SectionLabel>About</SectionLabel>
-      <p className={styles.bio}>{personal.bio}</p>
+      {personal.bio && (
+        <>
+          <SectionLabel>About</SectionLabel>
+          <p className={styles.bio}>{personal.bio}</p>
+        </>
+      )}
 
-      <SectionLabel>Work Experience</SectionLabel>
-      <div className={styles.workList}>
-        {experience.map((job) => (
-          <WorkCard key={job.id} job={job} />
-        ))}
-      </div>
+      {experience.length > 0 && (
+        <>
+          <SectionLabel>Work Experience</SectionLabel>
+          <div className={styles.workList}>
+            {experience.map((job) => (
+              <WorkCard key={job.id} job={job} />
+            ))}
+          </div>
+        </>
+      )}
 
       <hr className={styles.divider} />
 

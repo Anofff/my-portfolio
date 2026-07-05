@@ -22,3 +22,10 @@
 .list {
   margin-bottom: 2rem;
 }
+
+.state {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 2rem 0;
+}

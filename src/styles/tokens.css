@@ -13,4 +13,10 @@
 
   --max-width: 680px;
   --page-padding: 1.5rem;
+
+  --color-series: #9b59b6;
+  --color-projects: #1abc9c;
+  --color-system: #f39c12;
+  --color-concepts: #3498db;
+  --color-competitive: #e74c3c;
 }

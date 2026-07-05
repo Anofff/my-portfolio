@@ -48,14 +48,16 @@ export default function SocialLinks({ socials, resumeUrl }) {
           </a>
         ))}
       </div>
-      <a
-        href={resumeUrl}
-        target="_blank"
-        rel="noreferrer"
-        className={styles.resumeBtn}
-      >
-        Resume →
-      </a>
+      {resumeUrl && (
+        <a
+          href={resumeUrl}
+          target="_blank"
+          rel="noreferrer"
+          className={styles.resumeBtn}
+        >
+          Resume →
+        </a>
+      )}
     </div>
   )
 }

@@ -5,9 +5,9 @@ import FilterBar from '../../components/FilterBar/FilterBar'
 import styles from './Projects.module.css'
 
 export default function Projects() {
-  const [active, setActive] = useState('All')
+  const [active, setActive] = useState('all')
   const filtered =
-    active === 'All' ? projects : projects.filter((p) => p.category === active)
+    active === 'all' ? projects : projects.filter((p) => p.category === active)
 
   return (
     <div>
@@ -18,11 +18,20 @@ export default function Projects() {
           source work.
         </p>
       </div>
-      <FilterBar options={projectCategories} active={active} onChange={setActive} />
+      {projects.length > 0 && (
+        <FilterBar
+          options={projectCategories}
+          active={active}
+          onChange={setActive}
+        />
+      )}
       <div className={styles.list}>
         {filtered.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
+        {projects.length === 0 && (
+          <p className={styles.state}>No projects yet.</p>
+        )}
       </div>
     </div>
   )

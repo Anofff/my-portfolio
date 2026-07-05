@@ -5,12 +5,12 @@ export default function FilterBar({ options, active, onChange }) {
     <div className={styles.bar}>
       {options.map((opt) => (
         <button
-          key={opt}
+          key={opt.id}
           type="button"
-          className={`${styles.btn} ${active === opt ? styles.active : ''}`}
-          onClick={() => onChange(opt)}
+          className={`${styles.btn} ${active === opt.id ? styles.active : ''}`}
+          onClick={() => onChange(opt.id)}
         >
-          {opt}
+          {opt.label}
         </button>
       ))}
     </div>
