@@ -1,11 +1,12 @@
 :root {
-  --bg: #2b2b2b;
-  --surface: #222222;
-  --surface2: #1e1e1e;
+  --bg: #1a1a1a;
+  --surface: #212121;
+  --surface2: #262626;
   --yellow: #c8d400;
-  --white: #e8e8e8;
-  --muted: #777777;
-  --border: #3a3a3a;
+  --white: #ececec;
+  --muted: #909090;
+  --faint: #6f6f6f;
+  --border: #383838;
 
   --font-display: 'VT323', monospace;
   --font-mono: 'Share Tech Mono', monospace;

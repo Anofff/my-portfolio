@@ -1,0 +1,30 @@
+Day 12 of the 30 Days of AWS series, and today networking finally bit me: a Lambda that could not reach the internet no matter what I tried. Here's the debugging trail.
+
+## The setup
+
+I put a Lambda inside a VPC so it could talk to an RDS instance on a private subnet. That part worked. But the same Lambda also needed to call an external payments API — and every outbound request just hung until it timed out.
+
+## Public vs private subnets
+
+The thing that finally clicked: a subnet is "public" or "private" based entirely on its **route table**, not on any checkbox.
+
+- A **public** subnet has a route `0.0.0.0/0 → internet gateway`.
+- A **private** subnet has no such route, so nothing inside it can reach the internet directly.
+
+My Lambda was in a private subnet (correct — you don't want your database tier publicly routable), which is exactly why its outbound calls went nowhere.
+
+## Enter the NAT gateway
+
+To let private resources make *outbound* connections without being reachable *inbound*, you put a NAT gateway in a public subnet and add a route:
+
+```text
+private subnet route table:
+  10.0.0.0/16   -> local
+  0.0.0.0/0     -> nat-xxxxxxxx
+```
+
+The NAT lives in the public subnet (which routes to the internet gateway), so traffic flows: Lambda → NAT → IGW → internet, and the return path comes back the same way.
+
+## The lesson
+
+If something in a VPC "can't reach the internet," walk the route table before touching security groups. Nine times out of ten it's a missing `0.0.0.0/0` route, and the fix is a NAT gateway — not another frantic security-group edit.

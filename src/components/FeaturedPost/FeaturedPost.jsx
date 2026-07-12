@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom'
 import TopicPill from '../TopicPill/TopicPill'
 import styles from './FeaturedPost.module.css'
 
 export default function FeaturedPost({ post }) {
   return (
-    <a href={post.url} className={styles.card}>
+    <Link to={`/blogs/${post.slug}`} className={styles.card}>
       {post.coverImage && (
         <img src={post.coverImage} alt={post.title} className={styles.cover} />
       )}
@@ -22,6 +23,6 @@ export default function FeaturedPost({ post }) {
         <p className={styles.excerpt}>{post.excerpt}</p>
         <p className={styles.date}>{post.date}</p>
       </div>
-    </a>
+    </Link>
   )
 }

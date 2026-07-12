@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom'
 import TopicPill from '../TopicPill/TopicPill'
 import styles from './BlogCard.module.css'
 
 export default function BlogCard({ post }) {
   return (
-    <a href={post.url} className={styles.row}>
+    <Link to={`/blogs/${post.slug}`} className={styles.row}>
       <div className={styles.date}>
         <span>{post.dateShort.day}</span>
         <span>{post.dateShort.year}</span>
@@ -21,6 +22,6 @@ export default function BlogCard({ post }) {
         <p className={styles.excerpt}>{post.excerpt}</p>
       </div>
       <span className={styles.arrow}>→</span>
-    </a>
+    </Link>
   )
 }

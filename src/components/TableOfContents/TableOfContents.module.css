@@ -1,0 +1,55 @@
+.toc {
+  display: block;
+}
+
+.heading {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 0.9rem;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border-left: 1px solid var(--border);
+}
+
+.list li {
+  padding-left: 0.9rem;
+  margin-left: -1px;
+  border-left: 1px solid transparent;
+}
+
+.list li a {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+
+.list li a:hover {
+  color: var(--white);
+}
+
+.sub {
+  padding-left: 1.8rem !important;
+}
+
+.active {
+  border-left-color: var(--yellow) !important;
+}
+
+.active a {
+  color: var(--yellow);
+}
+
+.toc {
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}

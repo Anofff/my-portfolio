@@ -7,7 +7,7 @@ export default function Layout({ personal }) {
   return (
     <div className={styles.page}>
       <Nav initials={personal.initials} />
-      <main className={styles.main}>
+      <main>
         <Outlet />
       </main>
       <Footer name={personal.name} role={personal.role} />

@@ -1,0 +1,33 @@
+Networks fail in the most annoying way possible: the server does the work, then the response gets lost on the way back. The client, seeing nothing, retries. Now you've charged the customer twice.
+
+Idempotency keys are how payment systems make retries safe.
+
+## The core idea
+
+An idempotency key is a unique token the *client* generates and attaches to a request. The server promises: **for a given key, the operation runs at most once.** Retry with the same key and you get the original result back, not a second charge.
+
+```http
+POST /v1/charges
+Idempotency-Key: 8f14e45f-ceea-467d-9f7a-1c3b2e9a1234
+
+{ "amount": 5000, "currency": "GHS" }
+```
+
+## Server-side flow
+
+When a request comes in, the server does roughly this:
+
+1. Look up the key in a store (Redis, or a table with a unique constraint).
+2. If it's **new**, mark it in-flight, do the work, and save the response against the key.
+3. If it **exists and is complete**, return the saved response without re-running anything.
+4. If it **exists and is in-flight**, the original request is still processing — return a `409` and let the client back off.
+
+The unique constraint on the key column is doing the heavy lifting: two concurrent requests with the same key can't both win the insert.
+
+## Things that bite you
+
+- **Scope keys per endpoint and per account.** A key should never let one customer's retry collide with another's.
+- **Store the request fingerprint too.** If someone reuses a key with a *different* body, that's a client bug — reject it loudly instead of silently returning the wrong response.
+- **Expire keys, but not too soon.** 24 hours is a common window; long enough for realistic retries, short enough to keep the store small.
+
+Get this right once, wrap it in middleware, and every mutating endpoint you write afterwards inherits safe retries for free.
