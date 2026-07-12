@@ -1,19 +1,19 @@
 import { useState, useMemo } from 'react'
-import { blogs, blogCategories, activeSeries } from '../../data'
-import SeriesBanner from '../../components/SeriesBanner/SeriesBanner'
-import FeaturedPost from '../../components/FeaturedPost/FeaturedPost'
-import BlogCard from '../../components/BlogCard/BlogCard'
-import FilterBar from '../../components/FilterBar/FilterBar'
-import SectionLabel from '../../components/SectionLabel/SectionLabel'
-import styles from './Blogs.module.css'
+import { blogCategories, activeSeries } from '../../data'
+import SeriesBanner from '../SeriesBanner/SeriesBanner'
+import FeaturedPost from '../FeaturedPost/FeaturedPost'
+import BlogCard from '../BlogCard/BlogCard'
+import FilterBar from '../FilterBar/FilterBar'
+import SectionLabel from '../SectionLabel/SectionLabel'
+import styles from './BlogIndex.module.css'
 
-export default function Blogs() {
+export default function BlogIndex({ posts }) {
   const [active, setActive] = useState('all')
 
-  const featured = blogs.find((p) => p.featured)
+  const featured = posts.find((p) => p.featured)
   const filtered = useMemo(() => {
-    return active === 'all' ? blogs : blogs.filter((p) => p.topic === active)
-  }, [active])
+    return active === 'all' ? posts : posts.filter((p) => p.topic === active)
+  }, [active, posts])
 
   return (
     <div>
@@ -29,7 +29,7 @@ export default function Blogs() {
 
       {featured && <FeaturedPost post={featured} />}
 
-      {blogs.length > 0 && (
+      {posts.length > 0 && (
         <FilterBar
           options={blogCategories}
           active={active}
@@ -37,16 +37,16 @@ export default function Blogs() {
         />
       )}
 
-      {blogs.length > 0 && <SectionLabel>All Posts</SectionLabel>}
+      {posts.length > 0 && <SectionLabel>All Posts</SectionLabel>}
 
       <div className={styles.list}>
         {filtered.map((post) => (
-          <BlogCard key={post.id} post={post} />
+          <BlogCard key={post.slug} post={post} />
         ))}
-        {blogs.length === 0 && (
+        {posts.length === 0 && (
           <p className={styles.state}>No posts yet. Check back soon.</p>
         )}
-        {blogs.length > 0 && filtered.length === 0 && (
+        {posts.length > 0 && filtered.length === 0 && (
           <p className={styles.state}>No posts in this category yet.</p>
         )}
       </div>

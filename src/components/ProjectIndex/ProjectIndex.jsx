@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { projects, projectCategories } from '../../data'
-import ProjectCard from '../../components/ProjectCard/ProjectCard'
-import FilterBar from '../../components/FilterBar/FilterBar'
-import styles from './Projects.module.css'
+import ProjectCard from '../ProjectCard/ProjectCard'
+import FilterBar from '../FilterBar/FilterBar'
+import styles from './ProjectIndex.module.css'
 
-export default function Projects() {
+export default function ProjectIndex() {
   const [active, setActive] = useState('all')
   const filtered =
     active === 'all' ? projects : projects.filter((p) => p.category === active)

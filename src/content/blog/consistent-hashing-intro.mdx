@@ -1,3 +1,11 @@
+---
+title: 'A gentle intro to consistent hashing'
+topic: concepts
+excerpt: 'The data structure behind distributed caches and databases, explained with a pizza-delivery analogy.'
+date: 2026-06-05
+readTime: 7 min
+---
+
 Say you run a pizza shop with 3 delivery riders. You assign each order to a rider by `order_id % 3`. Simple. Then you hire a fourth rider, switch to `% 4`, and suddenly *almost every* order gets reassigned to a different person. Chaos.
 
 That's exactly what happens to a distributed cache when you add or remove a node. Consistent hashing is the fix.

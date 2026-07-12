@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import styles from './TableOfContents.module.css'
 
-export default function TableOfContents({ containerRef, ready }) {
+export default function TableOfContents({ contentSelector = 'article' }) {
   const [headings, setHeadings] = useState([])
   const [activeId, setActiveId] = useState('')
 
   useEffect(() => {
-    if (!ready) return
-    const root = containerRef.current
+    const root = document.querySelector(contentSelector)
     if (!root) return
 
     const els = Array.from(root.querySelectorAll('h2, h3'))
@@ -30,7 +29,7 @@ export default function TableOfContents({ containerRef, ready }) {
     )
     els.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [containerRef, ready])
+  }, [contentSelector])
 
   if (headings.length === 0) return null
 

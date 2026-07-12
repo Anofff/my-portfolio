@@ -1,3 +1,11 @@
+---
+title: 'Idempotency keys: making retries safe in payment systems'
+topic: system-design
+excerpt: 'How to design APIs that survive network hiccups and double-clicks without charging customers twice.'
+date: 2026-06-20
+readTime: 11 min
+---
+
 Networks fail in the most annoying way possible: the server does the work, then the response gets lost on the way back. The client, seeing nothing, retries. Now you've charged the customer twice.
 
 Idempotency keys are how payment systems make retries safe.

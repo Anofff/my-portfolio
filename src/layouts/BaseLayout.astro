@@ -1,0 +1,82 @@
+---
+import { personal } from '../data'
+import '../styles/global.css'
+import layoutStyles from '../components/Layout/Layout.module.css'
+import navStyles from '../components/Nav/Nav.module.css'
+import footerStyles from '../components/Footer/Footer.module.css'
+
+const {
+  title = `${personal.name} — ${personal.role}`,
+  description = personal.bio,
+  ogType = 'website',
+  publishedDate = null,
+} = Astro.props
+
+const canonical = new URL(Astro.url.pathname, Astro.site)
+const pathname = Astro.url.pathname
+const isActive = (href) => pathname === href || pathname.startsWith(`${href}/`)
+const year = new Date().getFullYear()
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={personal.name} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={personal.name} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {
+      publishedDate && (
+        <meta
+          property="article:published_time"
+          content={publishedDate.toISOString()}
+        />
+      )
+    }
+
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${personal.name} — Blog`}
+      href={new URL('rss.xml', Astro.site)}
+    />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class={layoutStyles.page}>
+      <nav class={navStyles.nav}>
+        <a href="/" class={navStyles.logo}>{personal.initials} ›</a>
+        <div class={navStyles.links}>
+          <a href="/blogs" class={isActive('/blogs') ? navStyles.active : undefined}>Blogs</a>
+          <a href="/projects" class={isActive('/projects') ? navStyles.active : undefined}>Projects</a>
+        </div>
+      </nav>
+      <main>
+        <slot />
+      </main>
+      <footer class={footerStyles.footer}>
+        © {year} · {personal.name} · {personal.role}
+      </footer>
+    </div>
+  </body>
+</html>
