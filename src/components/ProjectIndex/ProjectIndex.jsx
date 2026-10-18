@@ -6,6 +6,10 @@ import styles from './ProjectIndex.module.css'
 
 export default function ProjectIndex() {
   const [active, setActive] = useState('all')
+  const used = new Set(projects.map((p) => p.category))
+  const filterOptions = projectCategories.filter(
+    (c) => c.id === 'all' || used.has(c.id),
+  )
   const filtered =
     active === 'all' ? projects : projects.filter((p) => p.category === active)
 
@@ -18,9 +22,9 @@ export default function ProjectIndex() {
           source work.
         </p>
       </div>
-      {projects.length > 0 && (
+      {filterOptions.length > 2 && (
         <FilterBar
-          options={projectCategories}
+          options={filterOptions}
           active={active}
           onChange={setActive}
         />
