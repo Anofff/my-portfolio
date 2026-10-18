@@ -19,6 +19,12 @@ export default function BlogIndex({ posts }) {
     return posts.filter((p) => p.topic === active)
   }, [active, featured, posts])
 
+  // Only offer filters for categories that actually have posts.
+  const usedTopics = new Set(posts.map((p) => p.topic))
+  const filterOptions = blogCategories.filter(
+    (c) => c.id === 'all' || usedTopics.has(c.id),
+  )
+
   const latestInSeries = posts.find((p) => p.topic === 'series')
   const hasHero = featured || activeSeries
   const label =
@@ -45,10 +51,10 @@ export default function BlogIndex({ posts }) {
         </div>
       )}
 
-      {posts.length > 0 && (
+      {filterOptions.length > 2 && (
         <div className={styles.filters}>
           <FilterBar
-            options={blogCategories}
+            options={filterOptions}
             active={active}
             onChange={setActive}
           />
@@ -62,7 +68,15 @@ export default function BlogIndex({ posts }) {
           <BlogCard key={post.slug} post={post} />
         ))}
         {posts.length === 0 && (
-          <p className={styles.state}>No posts yet. Check back soon.</p>
+          <div className={styles.empty}>
+            <p className={styles.emptyLabel}>● Coming soon</p>
+            <p className={styles.emptyTitle}>The first post is on its way.</p>
+            <p className={styles.emptyText}>
+              I'll be writing about cloud infrastructure, backend systems, and
+              what I learn building things. Follow along via{' '}
+              <a href="/rss.xml">RSS</a>.
+            </p>
+          </div>
         )}
         {posts.length > 0 && filtered.length === 0 && (
           <p className={styles.state}>No posts in this category yet.</p>

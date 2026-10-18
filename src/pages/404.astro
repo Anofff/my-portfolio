@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { personal } from '../data'
+---
+
+<BaseLayout title={`Page not found — ${personal.name}`} description="This page doesn't exist.">
+  <section class="notfound">
+    <p class="code">404</p>
+    <h1>Nothing here.</h1>
+    <p class="text">The page you're looking for doesn't exist, or it moved.</p>
+    <div class="links">
+      <a href="/">← Home</a>
+      <a href="/blogs">Blogs</a>
+      <a href="/projects">Projects</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound {
+    padding: 2rem 0 4rem;
+  }
+
+  .code {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+    color: var(--yellow);
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+    margin-bottom: 0.75rem;
+  }
+
+  .text {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+
+  .links a {
+    color: var(--muted);
+    transition: color 0.15s;
+  }
+
+  .links a:hover {
+    color: var(--yellow);
+  }
+</style>

@@ -1,15 +1,14 @@
 /* Break out of the Layout's 680px column and re-center a wider container,
    so we can fit the article + a sticky TOC sidebar side by side. */
+/* The page uses the layout's wide frame; article + sticky TOC sit side by side. */
 .wide {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(960px, calc(100vw - 3rem));
+  width: 100%;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 200px;
+  grid-template-columns: minmax(0, 680px) 200px;
+  justify-content: space-between;
   gap: 2.5rem;
   align-items: start;
 }
@@ -25,12 +24,6 @@
 }
 
 @media (max-width: 992px) {
-  .wide {
-    left: auto;
-    transform: none;
-    width: 100%;
-  }
-
   .grid {
     grid-template-columns: 1fr;
     gap: 0;
@@ -38,6 +31,7 @@
 
   .main {
     margin: 0 auto;
+    max-width: 680px;
   }
 
   .tocCol {

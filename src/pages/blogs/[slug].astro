@@ -22,10 +22,12 @@ const { Content } = await render(entry)
 ---
 
 <BaseLayout
+  wide
   title={`${post.title} — ${personal.name}`}
   description={post.excerpt}
   ogType="article"
   publishedDate={post.isoDate}
+  image={post.coverImage}
 >
   <div class={styles.wide}>
     <a href="/blogs" class={styles.back}>← Back</a>

@@ -56,3 +56,40 @@
     grid-template-columns: 1fr;
   }
 }
+
+.empty {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--yellow);
+  border-radius: 10px;
+  padding: 1.75rem;
+  max-width: 40rem;
+}
+
+.emptyLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--yellow);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.emptyTitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.emptyText {
+  font-size: 0.98rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+.emptyText a {
+  color: var(--yellow);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

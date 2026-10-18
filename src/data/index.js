@@ -68,48 +68,16 @@ export const experience = [
 
 export const projects = [
   {
-    id: 'proj-1',
+    id: 'calebanoff-dev',
     year: '2026',
-    category: 'Tool',
-    title: 'infra-snap',
-    description:
-      'A CLI that snapshots live AWS resources and generates matching Terraform so you can bring existing infrastructure under version control.',
-    stack: ['Go', 'Terraform', 'AWS'],
-    url: 'https://github.com/Anofff',
-    wip: true,
-  },
-  {
-    id: 'proj-2',
-    year: '2025',
     category: 'Web',
-    title: 'ledgerlite',
+    title: 'calebanoff.dev',
     description:
-      'A double-entry bookkeeping API and dashboard for small businesses, with role-based access and exportable reports.',
-    stack: ['TypeScript', 'Node', 'PostgreSQL', 'React'],
-    url: 'https://github.com/Anofff',
-    wip: false,
-  },
-  {
-    id: 'proj-3',
-    year: '2025',
-    category: 'Open Source',
-    title: 'retry-rs',
-    description:
-      'A tiny, dependency-free retry/backoff library for Rust with jitter strategies and async support.',
-    stack: ['Rust', 'Tokio'],
-    url: 'https://github.com/Anofff',
-    wip: false,
-  },
-  {
-    id: 'proj-4',
-    year: '2024',
-    category: 'Mobile',
-    title: 'trotro',
-    description:
-      'An offline-first transit app that maps informal minibus routes across Accra using crowd-sourced GPS traces.',
-    stack: ['React Native', 'Expo', 'SQLite'],
-    url: 'https://github.com/Anofff',
-    wip: false,
+      'This site: my portfolio and blog, built with Astro and React, pre-rendered for speed and SEO, deployed on Vercel with images served from Cloudinary.',
+    stack: ['Astro', 'React', 'MDX', 'Vercel', 'Cloudinary'],
+    url: 'https://github.com/Anofff/my-portfolio',
+    liveUrl: 'https://my-portfolio-one-delta-83.vercel.app', // → https://calebanoff.dev once connected
+    wip: true,
   },
 ]
 
@@ -126,17 +94,16 @@ export const projectCategories = [
 // See src/content/blog/*.mdx and src/lib/posts.js
 
 // Set to null to hide the series banner until your series starts
-export const activeSeries = {
-  name: '30 Days of AWS',
-  currentDay: 12,
-  totalDays: 30,
-  githubUrl: 'https://github.com/Anofff',
-}
+// e.g. { name: '30 Days of AWS', currentDay: 1, totalDays: 30, githubUrl: '...' }
+export const activeSeries = null
 
+// Blog categories. A post's `topic` must be one of these ids (checked at build).
+// To add a category, add one line here; the color is used for its pill.
 export const blogCategories = [
-  { id: 'all', label: 'All', color: 'var(--white)' },
-  { id: 'series', label: 'Learning Series', color: 'var(--color-series)' },
-  { id: 'projects', label: 'Projects', color: 'var(--color-projects)' },
-  { id: 'system-design', label: 'System Design', color: 'var(--color-system)' },
-  { id: 'concepts', label: 'Concepts & Explainers', color: 'var(--color-concepts)' },
+  { id: 'all', label: 'All', color: '#ececec' },
+  { id: 'series', label: 'Learning Series', color: '#b07cc6' },
+  { id: 'projects', label: 'Projects', color: '#1abc9c' },
+  { id: 'system-design', label: 'System Design', color: '#f39c12' },
+  { id: 'concepts', label: 'Concepts & Explainers', color: '#3498db' },
+  { id: 'competitive', label: 'Competitive Programming', color: '#e74c3c' },
 ]
