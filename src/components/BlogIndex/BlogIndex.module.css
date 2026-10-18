@@ -57,6 +57,27 @@
   }
 }
 
+.emptyWrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* The artwork's background matches the page, so it sits on it seamlessly. */
+.emptyArt {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media (max-width: 820px) {
+  .emptyWrap {
+    grid-template-columns: 1fr;
+  }
+}
+
 .empty {
   background: var(--surface);
   border: 1px solid var(--border);

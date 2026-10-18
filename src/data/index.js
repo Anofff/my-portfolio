@@ -93,6 +93,13 @@ export const projectCategories = [
 // ─── Blog post metadata now lives in each post's frontmatter ─────────────────
 // See src/content/blog/*.mdx and src/lib/posts.js
 
+// Blogs page artwork (Cloudinary). Shown beside the 'coming soon' card and
+// used as the page's link-preview image.
+export const blogPage = {
+  image: 'https://res.cloudinary.com/dn7dzk2w8/image/upload/v1792289322/writing-desk_j2cuzr.png',
+  imageAlt: 'Illustration of a developer at a desk writing a post titled “What I learned today”',
+}
+
 // Set to null to hide the series banner until your series starts
 // e.g. { name: '30 Days of AWS', currentDay: 1, totalDays: 30, githubUrl: '...' }
 export const activeSeries = null
