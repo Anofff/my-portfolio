@@ -34,27 +34,27 @@ export const socials = [
 // badge: 'current' | 'contract' | null
 
 export const experience = [
-  {
-    id: 'exp-1',
-    company: 'Nimbus Labs',
-    role: 'Software Engineer, Platform',
-    period: '2024 — Present',
-    location: 'Remote',
-    badge: 'current',
-  },
-  {
-    id: 'exp-2',
-    company: 'Paystack',
-    role: 'Backend Engineer',
-    period: '2022 — 2024',
-    location: 'Accra, GH',
-    badge: null,
-  },
+  // {
+  //   id: 'exp-1',
+  //   company: 'Cloudfolio',
+  //   role: 'Software Engineer, Platform',
+  //   period: '2024 — Present',
+  //   location: 'Remote',
+  //   badge: 'current',
+  // },
+  // {
+  //   id: 'exp-2',
+  //   company: 'Paystack',
+  //   role: 'Backend Engineer',
+  //   period: '2022 — 2024',
+  //   location: 'Accra, GH',
+  //   badge: null,
+  // },
   {
     id: 'exp-3',
-    company: 'Freelance',
+    company: 'Call 2 Care',
     role: 'Full-Stack Developer',
-    period: '2021 — 2022',
+    period: '2024 — 2025',
     location: 'Remote',
     badge: 'contract',
   },
@@ -134,5 +134,4 @@ export const blogCategories = [
   { id: 'projects', label: 'Projects', color: 'var(--color-projects)' },
   { id: 'system-design', label: 'System Design', color: 'var(--color-system)' },
   { id: 'concepts', label: 'Concepts & Explainers', color: 'var(--color-concepts)' },
-  { id: 'competitive', label: 'Competitive Programming', color: 'var(--color-competitive)' },
 ]
