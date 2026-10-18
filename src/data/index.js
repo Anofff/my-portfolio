@@ -68,15 +68,15 @@ export const experience = [
 
 export const projects = [
   {
-    id: 'calebanoff-dev',
+    id: 'calebanoff-com',
     year: '2026',
     category: 'Web',
-    title: 'calebanoff.dev',
+    title: 'calebanoff.com',
     description:
       'This site: my portfolio and blog, built with Astro and React, pre-rendered for speed and SEO, deployed on Vercel with images served from Cloudinary.',
     stack: ['Astro', 'React', 'MDX', 'Vercel', 'Cloudinary'],
     url: 'https://github.com/Anofff/my-portfolio',
-    liveUrl: 'https://my-portfolio-one-delta-83.vercel.app', // → https://calebanoff.dev once connected
+    liveUrl: 'https://www.calebanoff.com',
     wip: true,
   },
 ]

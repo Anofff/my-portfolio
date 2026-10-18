@@ -4,9 +4,9 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 
 // Production URL, used for the sitemap, RSS feed, and canonical/OG URLs.
-// Switch to 'https://calebanoff.dev' once the domain is connected in Vercel
-// (or set SITE_URL in Vercel's environment variables).
-const SITE_URL = process.env.SITE_URL || 'https://my-portfolio-one-delta-83.vercel.app'
+// Must match the domain Vercel serves as primary (calebanoff.com redirects to www).
+// SITE_URL in Vercel's environment variables overrides it.
+const SITE_URL = process.env.SITE_URL || 'https://www.calebanoff.com'
 
 export default defineConfig({
   site: SITE_URL,
