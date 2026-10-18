@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "topic": {
+      "type": "string",
+      "enum": [
+        "series",
+        "projects",
+        "system-design",
+        "concepts",
+        "competitive"
+      ]
+    },
+    "excerpt": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "readTime": {
+      "type": "string"
+    },
+    "featured": {
+      "default": false,
+      "type": "boolean"
+    },
+    "series": {
+      "type": "object",
+      "properties": {
+        "day": {
+          "type": "number"
+        },
+        "totalDays": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "day",
+        "totalDays"
+      ]
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "topic",
+    "excerpt",
+    "date",
+    "readTime"
+  ]
+}
