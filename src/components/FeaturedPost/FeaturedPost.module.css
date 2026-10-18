@@ -3,7 +3,7 @@
   background: var(--surface);
   border: 0.5px solid var(--border);
   border-radius: 10px;
-  margin-bottom: 2rem;
+  height: 100%;
   overflow: hidden;
   position: relative;
   transition: border-color 0.2s;
@@ -30,7 +30,7 @@
 
 .cover {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
   opacity: 0.85;
 }
@@ -41,7 +41,7 @@
 
 .featuredLabel {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--yellow);
   margin-bottom: 0.75rem;
   letter-spacing: 0.08em;
@@ -57,7 +57,7 @@
 
 .dayPill {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   background: rgba(155, 89, 182, 0.12);
   color: var(--color-series);
   border: 0.5px solid rgba(155, 89, 182, 0.3);
@@ -67,12 +67,12 @@
 
 .readTime {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: #555;
+  font-size: 0.75rem;
+  color: var(--faint);
 }
 
 .title {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 500;
   color: var(--white);
   margin-bottom: 0.5rem;
@@ -81,15 +81,15 @@
 }
 
 .excerpt {
-  font-size: 0.88rem;
-  font-weight: 300;
-  color: #999;
+  font-size: 0.98rem;
+  font-weight: 400;
+  color: var(--text-dim);
   line-height: 1.65;
   margin-bottom: 0.75rem;
 }
 
 .date {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--muted);
 }

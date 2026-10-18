@@ -60,7 +60,11 @@ export const experience = [
   },
 ]
 
-// ─── Projects — add entries as { id, year, category, title, description, stack, url, wip } ─
+// ─── Projects ─────────────────────────────────────────────────────────────────
+// { id, year, category, title, description, stack, url, liveUrl?, image?, wip }
+//   url     → source code (GitHub)
+//   liveUrl → optional live demo / app store link
+//   image   → optional Cloudinary URL for a cover screenshot
 
 export const projects = [
   {
@@ -109,12 +113,13 @@ export const projects = [
   },
 ]
 
+// Each category carries its own color, so adding one needs no CSS changes.
 export const projectCategories = [
   { id: 'all', label: 'All' },
-  { id: 'Web', label: 'Web' },
-  { id: 'Mobile', label: 'Mobile' },
-  { id: 'Tool', label: 'Tool' },
-  { id: 'Open Source', label: 'Open Source' },
+  { id: 'Web', label: 'Web', color: '#7aa3d4' },
+  { id: 'Mobile', label: 'Mobile', color: '#8db87a' },
+  { id: 'Tool', label: 'Tool', color: '#b48ac4' },
+  { id: 'Open Source', label: 'Open Source', color: '#c4a46a' },
 ]
 
 // ─── Blog posts — add after publishing on Hashnode ────────────────────────────

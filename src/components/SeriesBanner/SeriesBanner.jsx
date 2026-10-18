@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom'
 import styles from './SeriesBanner.module.css'
 
-export default function SeriesBanner({ series }) {
+export default function SeriesBanner({ series, latest }) {
   const pct = Math.round((series.currentDay / series.totalDays) * 100)
   return (
     <div className={styles.banner}>
@@ -16,6 +17,14 @@ export default function SeriesBanner({ series }) {
         </a>
       </div>
       <p className={styles.name}>{series.name}</p>
+      {latest && (
+        <Link to={`/blogs/${latest.slug}`} className={styles.latest}>
+          <span className={styles.latestLabel}>
+            Latest · Day {latest.series?.day}
+          </span>
+          <span className={styles.latestTitle}>{latest.title}</span>
+        </Link>
+      )}
       <div className={styles.progressRow}>
         <div className={styles.track}>
           <div className={styles.fill} style={{ width: `${pct}%` }} />
