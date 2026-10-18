@@ -1,10 +1,10 @@
 .header {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 10vw, 3.25rem);
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
   color: var(--yellow);
   letter-spacing: 0.04em;
   line-height: 1.05;
@@ -12,11 +12,32 @@
 }
 
 .sub {
-  font-size: 1rem;
-  font-weight: 300;
-  color: #999;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--text-dim);
   line-height: 1.65;
-  max-width: 36rem;
+  max-width: 40rem;
+}
+
+/* Featured post + active series. Side by side on wide screens. */
+.hero {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.heroSplit {
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+}
+
+/* Filters stay reachable while scrolling a long list. */
+.filters {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg);
+  padding: 1rem 0 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .list {
@@ -25,7 +46,13 @@
 
 .state {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--muted);
   padding: 2rem 0;
+}
+
+@media (max-width: 820px) {
+  .heroSplit {
+    grid-template-columns: 1fr;
+  }
 }

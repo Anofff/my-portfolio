@@ -8,11 +8,16 @@
   --faint: #6f6f6f;
   --border: #383838;
 
+  /* text: body copy and secondary copy, tuned for contrast on --bg */
+  --text: #cfcfcf;
+  --text-dim: #ababab;
+
   --font-display: 'VT323', monospace;
   --font-mono: 'Share Tech Mono', monospace;
   --font-body: 'Inter', system-ui, sans-serif;
 
   --max-width: 680px;
+  --max-width-wide: 1040px;
   --page-padding: 1.5rem;
 
   --color-series: #9b59b6;

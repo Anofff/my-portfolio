@@ -1,12 +1,19 @@
 import { Link } from 'react-router-dom'
 import TopicPill from '../TopicPill/TopicPill'
+import { cld, cldSrcSet } from '../../lib/cloudinary'
 import styles from './FeaturedPost.module.css'
 
 export default function FeaturedPost({ post }) {
   return (
     <Link to={`/blogs/${post.slug}`} className={styles.card}>
       {post.coverImage && (
-        <img src={post.coverImage} alt={post.title} className={styles.cover} />
+        <img
+          src={cld(post.coverImage, { width: 720 })}
+          srcSet={cldSrcSet(post.coverImage, 720)}
+          alt=""
+          loading="lazy"
+          className={styles.cover}
+        />
       )}
       <div className={styles.body}>
         <p className={styles.featuredLabel}>● Latest post</p>

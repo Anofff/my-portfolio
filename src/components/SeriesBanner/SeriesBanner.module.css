@@ -3,8 +3,10 @@
   border: 0.5px solid var(--border);
   border-left: 3px solid var(--color-series);
   border-radius: 8px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 2rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .top {
@@ -16,14 +18,14 @@
 
 .label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--color-series);
   letter-spacing: 0.08em;
 }
 
 .ghLink {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--muted);
   transition: color 0.15s;
 }
@@ -33,13 +35,14 @@
 }
 
 .name {
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   font-weight: 500;
   color: var(--white);
-  margin-bottom: 0.85rem;
+  margin: 0.25rem 0 1.25rem;
 }
 
 .progressRow {
+  margin-top: auto;
   display: flex;
   align-items: center;
   gap: 0.85rem;
@@ -47,7 +50,7 @@
 
 .track {
   flex: 1;
-  height: 4px;
+  height: 6px;
   background: var(--border);
   border-radius: 999px;
   overflow: hidden;
@@ -62,7 +65,33 @@
 
 .count {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--muted);
   white-space: nowrap;
+}
+
+.latest {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.85rem 0 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.latestLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.latestTitle {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.45;
+  transition: color 0.15s;
+}
+
+.latest:hover .latestTitle {
+  color: var(--yellow);
 }

@@ -11,9 +11,20 @@ export default function Blogs() {
   const [active, setActive] = useState('all')
 
   const featured = blogs.find((p) => p.featured)
+
+  // On "All", the featured post is already shown in the hero, so skip it in
+  // the list. When a category is picked, show everything in that category.
   const filtered = useMemo(() => {
-    return active === 'all' ? blogs : blogs.filter((p) => p.topic === active)
-  }, [active])
+    if (active === 'all') return blogs.filter((p) => p !== featured)
+    return blogs.filter((p) => p.topic === active)
+  }, [active, featured])
+
+  const latestInSeries = blogs.find((p) => p.topic === 'series')
+  const hasHero = featured || activeSeries
+  const label =
+    active === 'all'
+      ? 'More posts'
+      : blogCategories.find((c) => c.id === active)?.label
 
   return (
     <div>
@@ -25,19 +36,26 @@ export default function Blogs() {
         </p>
       </div>
 
-      {activeSeries && <SeriesBanner series={activeSeries} />}
-
-      {featured && <FeaturedPost post={featured} />}
-
-      {blogs.length > 0 && (
-        <FilterBar
-          options={blogCategories}
-          active={active}
-          onChange={setActive}
-        />
+      {hasHero && (
+        <div
+          className={`${styles.hero} ${featured && activeSeries ? styles.heroSplit : ''}`}
+        >
+          {featured && <FeaturedPost post={featured} />}
+          {activeSeries && <SeriesBanner series={activeSeries} latest={latestInSeries} />}
+        </div>
       )}
 
-      {blogs.length > 0 && <SectionLabel>All Posts</SectionLabel>}
+      {blogs.length > 0 && (
+        <div className={styles.filters}>
+          <FilterBar
+            options={blogCategories}
+            active={active}
+            onChange={setActive}
+          />
+        </div>
+      )}
+
+      {filtered.length > 0 && <SectionLabel>{label}</SectionLabel>}
 
       <div className={styles.list}>
         {filtered.map((post) => (

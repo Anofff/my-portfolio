@@ -4,7 +4,22 @@ import { blogs, personal } from '../../data'
 import { getPostLoader } from '../../content/posts'
 import TopicPill from '../../components/TopicPill/TopicPill'
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
+import { cld, cldSrcSet } from '../../lib/cloudinary'
 import styles from './BlogPost.module.css'
+
+// Markdown images in posts (![alt](url)) are served through Cloudinary,
+// resized to the article column and lazy-loaded.
+const mdxComponents = {
+  img: ({ src, alt, ...rest }) => (
+    <img
+      {...rest}
+      src={cld(src, { width: 680 })}
+      srcSet={cldSrcSet(src, 680)}
+      alt={alt ?? ''}
+      loading="lazy"
+    />
+  ),
+}
 
 export default function BlogPost() {
   const { slug } = useParams()
@@ -77,7 +92,7 @@ export default function BlogPost() {
           </header>
 
           <article ref={contentRef} className={styles.prose}>
-            {Content ? <Content /> : <p className={styles.loading}>Loading…</p>}
+            {Content ? <Content components={mdxComponents} /> : <p className={styles.loading}>Loading…</p>}
           </article>
 
           <div className={styles.footerNav}>
