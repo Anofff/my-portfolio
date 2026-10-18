@@ -31,7 +31,11 @@ export default function TableOfContents({ contentSelector = 'article' }) {
     return () => observer.disconnect()
   }, [contentSelector])
 
-  if (headings.length === 0) return null
+  // Headings are only known in the browser. Render an empty element rather
+  // than null on the server: Astro's React check treats a null return as
+  // "not a React component" and re-calls it outside React (invalid hook call).
+  if (headings.length === 0) return <nav hidden aria-hidden="true" />
+
 
   const handleClick = (e, id) => {
     e.preventDefault()
