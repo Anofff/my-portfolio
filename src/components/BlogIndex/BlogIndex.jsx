@@ -1,25 +1,25 @@
 import { useState, useMemo } from 'react'
-import { blogs, blogCategories, activeSeries } from '../../data'
-import SeriesBanner from '../../components/SeriesBanner/SeriesBanner'
-import FeaturedPost from '../../components/FeaturedPost/FeaturedPost'
-import BlogCard from '../../components/BlogCard/BlogCard'
-import FilterBar from '../../components/FilterBar/FilterBar'
-import SectionLabel from '../../components/SectionLabel/SectionLabel'
-import styles from './Blogs.module.css'
+import { blogCategories, activeSeries } from '../../data'
+import SeriesBanner from '../SeriesBanner/SeriesBanner'
+import FeaturedPost from '../FeaturedPost/FeaturedPost'
+import BlogCard from '../BlogCard/BlogCard'
+import FilterBar from '../FilterBar/FilterBar'
+import SectionLabel from '../SectionLabel/SectionLabel'
+import styles from './BlogIndex.module.css'
 
-export default function Blogs() {
+export default function BlogIndex({ posts }) {
   const [active, setActive] = useState('all')
 
-  const featured = blogs.find((p) => p.featured)
+  const featured = posts.find((p) => p.featured)
 
   // On "All", the featured post is already shown in the hero, so skip it in
   // the list. When a category is picked, show everything in that category.
   const filtered = useMemo(() => {
-    if (active === 'all') return blogs.filter((p) => p !== featured)
-    return blogs.filter((p) => p.topic === active)
-  }, [active, featured])
+    if (active === 'all') return posts.filter((p) => p !== featured)
+    return posts.filter((p) => p.topic === active)
+  }, [active, featured, posts])
 
-  const latestInSeries = blogs.find((p) => p.topic === 'series')
+  const latestInSeries = posts.find((p) => p.topic === 'series')
   const hasHero = featured || activeSeries
   const label =
     active === 'all'
@@ -45,7 +45,7 @@ export default function Blogs() {
         </div>
       )}
 
-      {blogs.length > 0 && (
+      {posts.length > 0 && (
         <div className={styles.filters}>
           <FilterBar
             options={blogCategories}
@@ -59,12 +59,12 @@ export default function Blogs() {
 
       <div className={styles.list}>
         {filtered.map((post) => (
-          <BlogCard key={post.id} post={post} />
+          <BlogCard key={post.slug} post={post} />
         ))}
-        {blogs.length === 0 && (
+        {posts.length === 0 && (
           <p className={styles.state}>No posts yet. Check back soon.</p>
         )}
-        {blogs.length > 0 && filtered.length === 0 && (
+        {posts.length > 0 && filtered.length === 0 && (
           <p className={styles.state}>No posts in this category yet.</p>
         )}
       </div>

@@ -1,11 +1,10 @@
-import { Link } from 'react-router-dom'
 import TopicPill from '../TopicPill/TopicPill'
 import { cld, cldSrcSet } from '../../lib/cloudinary'
 import styles from './FeaturedPost.module.css'
 
 export default function FeaturedPost({ post }) {
   return (
-    <Link to={`/blogs/${post.slug}`} className={styles.card}>
+    <a href={`/blogs/${post.slug}`} className={styles.card}>
       {post.coverImage && (
         <img
           src={cld(post.coverImage, { width: 720 })}
@@ -30,6 +29,6 @@ export default function FeaturedPost({ post }) {
         <p className={styles.excerpt}>{post.excerpt}</p>
         <p className={styles.date}>{post.date}</p>
       </div>
-    </Link>
+    </a>
   )
 }

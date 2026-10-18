@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import BlogIndex from '../../components/BlogIndex/BlogIndex'
+import { personal } from '../../data'
+import { getPosts } from '../../lib/posts'
+
+const posts = (await getPosts()).map(({ isoDate, ...post }) => post)
+---
+
+<BaseLayout
+  wide
+  title={`Blogs — ${personal.name}`}
+  description="Documenting the journey — Terraform, AWS, system design, and everything in between."
+>
+  <BlogIndex posts={posts} client:load />
+</BaseLayout>

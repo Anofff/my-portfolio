@@ -12,7 +12,11 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 
-# Vite
+# Vite / Astro
 *.local
+.astro/
 
 plan/
+
+# Astro generated types
+.astro/

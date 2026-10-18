@@ -1,0 +1,15 @@
+---
+// Markdown images in posts (![alt](url)) are served through Cloudinary,
+// resized to the article column and lazy-loaded.
+import { cld, cldSrcSet } from '../../lib/cloudinary'
+
+const { src, alt, ...rest } = Astro.props
+---
+
+<img
+  {...rest}
+  src={cld(src, { width: 680 })}
+  srcset={cldSrcSet(src, 680)}
+  alt={alt ?? ''}
+  loading="lazy"
+/>

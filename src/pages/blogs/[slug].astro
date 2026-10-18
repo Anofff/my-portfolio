@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import TopicPill from '../../components/TopicPill/TopicPill'
+import TableOfContents from '../../components/TableOfContents/TableOfContents'
+import PostImage from '../../components/PostImage/PostImage.astro'
+import { personal } from '../../data'
+import { toPost } from '../../lib/posts'
+import styles from '../../styles/blog-post.module.css'
+
+export async function getStaticPaths() {
+  const entries = await getCollection('blog')
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }))
+}
+
+const { entry } = Astro.props
+const post = toPost(entry)
+const { Content } = await render(entry)
+---
+
+<BaseLayout
+  title={`${post.title} — ${personal.name}`}
+  description={post.excerpt}
+  ogType="article"
+  publishedDate={post.isoDate}
+>
+  <div class={styles.wide}>
+    <a href="/blogs" class={styles.back}>← Back</a>
+
+    <div class={styles.grid}>
+      <div class={styles.main}>
+        <header class={styles.header}>
+          <div class={styles.meta}>
+            <TopicPill topic={post.topic} />
+            {post.series?.day && (
+              <span class={styles.dayTag}>Day {post.series.day}</span>
+            )}
+          </div>
+          <h1 class={styles.title}>{post.title}</h1>
+          <p class={styles.byline}>
+            {personal.name} · {post.date} · {post.readTime} read
+          </p>
+        </header>
+
+        <article id="post-content" class={styles.prose}>
+          <Content components={{ img: PostImage }} />
+        </article>
+
+        <div class={styles.footerNav}>
+          <a href="/blogs" class={styles.back}>← All posts</a>
+        </div>
+      </div>
+
+      <aside class={styles.tocCol}>
+        <TableOfContents contentSelector="#post-content" client:load />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

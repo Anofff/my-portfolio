@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ProjectIndex from '../components/ProjectIndex/ProjectIndex'
+import { personal } from '../data'
+---
+
+<BaseLayout
+  wide
+  title={`Projects — ${personal.name}`}
+  description="A selection of things I've built — side projects, tools, and open source work."
+>
+  <ProjectIndex client:load />
+</BaseLayout>

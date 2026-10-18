@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import styles from './SeriesBanner.module.css'
 
 export default function SeriesBanner({ series, latest }) {
@@ -18,12 +17,12 @@ export default function SeriesBanner({ series, latest }) {
       </div>
       <p className={styles.name}>{series.name}</p>
       {latest && (
-        <Link to={`/blogs/${latest.slug}`} className={styles.latest}>
+        <a href={`/blogs/${latest.slug}`} className={styles.latest}>
           <span className={styles.latestLabel}>
             Latest · Day {latest.series?.day}
           </span>
           <span className={styles.latestTitle}>{latest.title}</span>
-        </Link>
+        </a>
       )}
       <div className={styles.progressRow}>
         <div className={styles.track}>
