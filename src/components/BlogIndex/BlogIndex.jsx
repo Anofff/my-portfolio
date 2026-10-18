@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
-import { blogCategories, activeSeries } from '../../data'
+import { blogCategories, activeSeries, blogPage } from '../../data'
+import { cld, cldSrcSet } from '../../lib/cloudinary'
 import SeriesBanner from '../SeriesBanner/SeriesBanner'
 import FeaturedPost from '../FeaturedPost/FeaturedPost'
 import BlogCard from '../BlogCard/BlogCard'
@@ -68,14 +69,26 @@ export default function BlogIndex({ posts }) {
           <BlogCard key={post.slug} post={post} />
         ))}
         {posts.length === 0 && (
-          <div className={styles.empty}>
-            <p className={styles.emptyLabel}>● Coming soon</p>
-            <p className={styles.emptyTitle}>The first post is on its way.</p>
-            <p className={styles.emptyText}>
-              I'll be writing about cloud infrastructure, backend systems, and
-              what I learn building things. Follow along via{' '}
-              <a href="/rss.xml">RSS</a>.
-            </p>
+          <div className={styles.emptyWrap}>
+            <div className={styles.empty}>
+              <p className={styles.emptyLabel}>● Coming soon</p>
+              <p className={styles.emptyTitle}>The first post is on its way.</p>
+              <p className={styles.emptyText}>
+                I'll be writing about cloud infrastructure, backend systems, and
+                what I learn building things. Follow along via{' '}
+                <a href="/rss.xml">RSS</a>.
+              </p>
+            </div>
+            {blogPage?.image && (
+              <img
+                className={styles.emptyArt}
+                src={cld(blogPage.image, { width: 680 })}
+                srcSet={cldSrcSet(blogPage.image, 680)}
+                alt={blogPage.imageAlt ?? ''}
+                width="1600"
+                height="900"
+              />
+            )}
           </div>
         )}
         {posts.length > 0 && filtered.length === 0 && (
